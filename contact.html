@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - DigitalAndStock</title>
+    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="assets/css/tiny-slider.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8f9fa;
+        }
+
+        .hero {
+            /* background: linear-gradient(135deg, #0c5ea5, #1e90ff); */
+            color: rgb(0, 0, 0);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            padding: 140px 20px 60px;
+
+        }
+         /* .contact-section .row .hero{
+            margin-top: 10px;
+         } */
+        .contact-box {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .contact-info i {
+            color: #0c5ea5;
+            margin-right: 10px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #0c5ea5, #1e90ff);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            opacity: 0.9;
+        }
+
+        iframe {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .navbar-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99;
+            transition: all 0.3s ease-out 0s;
+        }
+
+        .sticky {
+            position: fixed;
+            z-index: 99;
+            background-color: #fff;
+            box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-out 0s;
+        }
+
+        .sticky .navbar {
+            padding: 17px 0;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px),
+        (max-width: 767px) {
+            .sticky .navbar {
+                padding: 15px 0;
+            }
+        }
+
+        .sticky .navbar .navbar-nav .nav-item a {
+            color: #313450;
+        }
+
+        .sticky .navbar .navbar-toggler .toggler-icon {
+            background: #313450;
+        }
+
+        .navbar {
+            padding: 0;
+            border-radius: 5px;
+            position: relative;
+            transition: all 0.3s ease-out 0s;
+            padding: 20px 0;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px),
+        (max-width: 767px) {
+            .navbar {
+                padding: 17px 0;
+            }
+        }
+
+        .navbar-brand {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            max-width: 180px;
+        }
+
+        .navbar-toggler {
+            padding: 0;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .navbar-toggler .toggler-icon {
+            width: 30px;
+            height: 2px;
+            background-color: #313450;
+            display: block;
+            margin: 5px 0;
+            position: relative;
+            transition: all 0.3s ease-out 0s;
+        }
+
+        .navbar-toggler.active .toggler-icon:nth-of-type(1) {
+            transform: rotate(45deg);
+            top: 7px;
+        }
+
+        .navbar-toggler.active .toggler-icon:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        .navbar-toggler.active .toggler-icon:nth-of-type(3) {
+            transform: rotate(135deg);
+            top: -7px;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px),
+        (max-width: 767px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                z-index: 9;
+                box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
+                padding: 5px 12px;
+            }
+        }
+
+        .navbar-nav .nav-item {
+            position: relative;
+            margin-left: 40px;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px),
+        (max-width: 767px) {
+            .navbar-nav .nav-item {
+                margin-left: 20px;
+            }
+        }
+
+        .navbar-nav .nav-item a {
+            font-size: 18px;
+            font-weight: 400;
+            color: #6B6F92;
+            transition: all 0.3s ease-out 0s;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px),
+        (max-width: 767px) {
+            .navbar-nav .nav-item a {
+                display: inline-block;
+                padding: 6px 0px;
+                color: #6B6F92;
+            }
+        }
+
+        .navbar-nav .nav-item a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: auto;
+            width: 0;
+            height: 2px;
+            background: #4E6EF1;
+            z-index: -1;
+            opacity: 0;
+            border-radius: 10px;
+            transition: all 0.3s ease-out 0s;
+        }
+
+        .navbar-nav .nav-item a:hover,
+        .navbar-nav .nav-item a.active {
+            color: #4E6EF1;
+        }
+
+        .navbar-nav .nav-item a:hover::before,
+        .navbar-nav .nav-item a.active::before {
+            right: auto;
+            left: 0;
+            opacity: 1;
+            width: 100%;
+        }
+
+        .navbar-nav .nav-item:hover .sub-menu {
+            top: 100%;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .navbar-nav .nav-item:hover .sub-menu {
+                top: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar-nav .nav-item:hover .sub-menu {
+                top: 0;
+            }
+        }
+
+        .navbar-nav .nav-item .sub-menu {
+            width: 200px;
+            background-color: #fff;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 110%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-out 0s;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .navbar-nav .nav-item .sub-menu {
+                position: relative;
+                width: 100%;
+                top: 0;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar-nav .nav-item .sub-menu {
+                position: relative;
+                width: 100%;
+                top: 0;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        .navbar-nav .nav-item .sub-menu li {
+            display: block;
+        }
+
+        .navbar-nav .nav-item .sub-menu li a {
+            display: block;
+            padding: 8px 20px;
+            color: #222;
+        }
+
+        .navbar-nav .nav-item .sub-menu li a.active,
+        .navbar-nav .nav-item .sub-menu li a:hover {
+            padding-left: 25px;
+            color: #4E6EF1;
+        }
+
+        .navbar-nav .sub-nav-toggler {
+            display: none;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .navbar-nav .sub-nav-toggler {
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+                background: none;
+                color: #222;
+                font-size: 18px;
+                border: 0;
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar-nav .sub-nav-toggler {
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+                background: none;
+                color: #222;
+                font-size: 18px;
+                border: 0;
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        .navbar-nav .sub-nav-toggler span {
+            width: 8px;
+            height: 8px;
+            border-left: 1px solid #222;
+            border-bottom: 1px solid #222;
+            transform: rotate(-45deg);
+            position: relative;
+            top: -5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html">
+                                <img style="width: 180px;" src="assets/img/logo/Logo D&S/Logo D&S.png" alt="Logo" />
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                        <a class="" href="index.html">Trang chủ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="" href="index.html">Giới thiệu</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="" href="index.html">Dịch vụ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="" href="index.html">Cách thức làm việc</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll active" href="contact.html">Liên hệ</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+
+
+    <!-- CONTACT -->
+    <section class="contact-section container">
+        <div class="row g-4">
+            <section class="hero">
+                <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>Liên Hệ Với Chúng Tôi</b></h1>
+                <p>Chúng tôi luôn sẵn sàng lắng nghe và đồng hành cùng bạn</p>
+            </section>
+            <!-- LEFT INFO -->
+            <div class="col-lg-5">
+                <div class="contact-box contact-info">
+                    <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifd;">Thông Tin Liên Hệ</h4>
+                    <p><i class="lni lni-map-marker"></i> Việt Nam</p>
+                    <p><i class="lni lni-phone"></i> 0123 456 789</p>
+                    <p><i class="lni lni-envelope"></i> contact@digitalandstock.com</p>
+                    <p><i class="lni lni-alarm-clock"></i> Thời gian làm việc: 8h - 18h</p>
+
+                    <iframe
+                        src="https://maps.google.com/maps?q=Tòa nhà Đại Phát, 185B Hà Huy Giáp, Thạnh Lộc, Quận 12, Hồ Chí Minh&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                        height="220" style="border:0; border-radius:12px;" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="col-lg-7">
+                <div class="contact-box">
+                    <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifd;">Gửi Tin Nhắn</h4>
+
+                    <form>
+                        <input type="text" class="form-control" placeholder="Họ và tên" required>
+                        <input type="email" class="form-control" placeholder="Email" required>
+                        <input type="text" class="form-control" placeholder="Tiêu đề">
+                        <textarea class="form-control" rows="5" placeholder="Nội dung"></textarea>
+
+                        <button class="btn-custom">Gửi Tin Nhắn</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="hero" style="margin-top: -27px; "  >
+        <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Sẵn sàng trải nghiệm dịch vụ cá nhân hóa?</h2>
+        <p>Hãy liên hệ với chúng tôi ngay hôm nay</p>
+    </section>
+    <footer id="footer" class="footer">
+		<div class="container">
+			<div class="widget-wrapper">
+				<div class="row">
+					<div class="col-xl-3 col-md-6">
+						<div class="footer-widget">
+							<div class="logo mb-35">
+								<a  href="index.html"> <img style="width: 70%;" src="assets/img/logo/logo1.png" alt=""> </a>
+							</div>
+							<p class="desc mb-35" style="text-align: justify; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 17px;">Chúng tôi là đội ngũ công nghệ xây dựng hệ sinh thái dịch vụ cá nhân hóa. Nếu bạn có dự án, chúng tôi luôn sẵn sàng đồng hành cùng bạn để xây dựng và phát triển hiện diện số một cách hiệu quả.</p>
+							<ul class="socials">
+								<li>
+									<a href="jvascript:void(0)"> <i class="lni lni-facebook-filled"></i> </a>
+								</li>
+								<li>
+									<a href="jvascript:void(0)"> <i class="lni lni-twitter-filled"></i> </a>
+								</li>
+								<li>
+									<a href="jvascript:void(0)"> <i class="lni lni-instagram-filled"></i> </a>
+								</li>
+								<li>
+									<a href="jvascript:void(0)"> <i class="lni lni-linkedin-original"></i> </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-xl-2 offset-xl-1 col-md-5 offset-md-1 col-sm-6">
+						<div class="footer-widget">
+							<h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Liên kết</h3>
+							<ul class="liên kết" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 40px;">
+								<li> <a href="javascript:void(0)" >Trang chủ</a> </li>
+								<li> <a href="javascript:void(0)">Giới thiệu</a> </li>
+								<li> <a href="javascript:void(0)">Dịch vụ</a> </li>
+								<li> <a href="javascript:void(0)">Cách thức làm việc</a> </li>
+								<li> <a href="javascript:void(0)">Liên hệ</a> </li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-md-6 col-sm-6">
+						<div class="footer-widget">
+							<h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Các dịch vụ </h3>
+							<ul class="links" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 40px;">
+								<li> <a href="javascript:void(0)">Thời trang cá nhân hóa</a> </li>
+								<li> <a href="javascript:void(0)">Bác sĩ cá nhân hóa</a> </li>
+								<li> <a href="javascript:void(0)">Luật sư cá nhân hóa</a> </li>
+								<li> <a href="javascript:void(0)">Tiệc cá nhân hóa</a> </li>
+								<li> <a href="javascript:void(0)">Du lịch cá nhân hóa</a> </li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-md-6">
+						<div class="footer-widget">
+							<h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Thông tin liên hệ</h3>
+							<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+								<li>+003894372632</li>
+								<li>contact@digitalandstock.com</li>
+
+							</ul>
+							<div class="contact_map" style="width: 100%; height: 150px; margin-top: 5px;">
+								<div class="gmap_canvas">
+									<iframe
+										src="https://maps.google.com/maps?q=Tòa nhà Đại Phát, 185B Hà Huy Giáp, Thạnh Lộc, Quận 12, Hồ Chí Minh&t=&z=17&ie=UTF8&iwloc=&output=embed"
+										height="180" style="border:0; border-radius:12px;" loading="lazy">
+									</iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			
+
+		</div>
+	</footer>
+    <script src="assets/js/bootstrap-5.0.0-beta2.min.js"></script>
+	<script src="assets/js/count-up.min.js"></script>
+	<script src="assets/js/tiny-slider.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/polifill.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>
