@@ -1776,3 +1776,153 @@ p {
 .pb-225 {
   padding-bottom: 225px;
 }
+
+/* Tên class của ảnh mạng lưới nền (đảm bảo nó khớp với class trong HTML của bạn) */
+.hero-network-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    /* Bước 1: Giới hạn kích thước ảnh (Thay vì 100% màn hình) */
+    width: 40%; /* Điều chỉnh độ to nhỏ của hình mạng lưới (ví dụ: 30% đến 50%) */
+    max-width: 600px; /* Đặt chiều rộng tối đa để nó không bị quá to */
+    height: auto; /* Chiều cao tự động theo tỷ lệ */
+    
+    /* Bước 2: Đặt lớp layer để nó nằm dưới nội dung */
+    z-index: 1; /* Nằm trên hình nền chính (Background.png) */
+    
+    /* Bước 3: Đảm bảo ảnh không bị che mất nội dung */
+    pointer-events: none; /* Giúp người dùng có thể click xuyên qua ảnh nếu nó đè lên menu/chữ */
+}
+
+/* Bước 4: Đảm bảo nội dung chính (chữ và ảnh Trang chủ) nằm trên hình mạng lưới */
+.hero-section .container {
+    position: relative; /* Rất quan trọng để z-index hoạt động */
+    z-index: 2; /* Số này phải lớn hơn z-index của .hero-network-bg */
+}
+
+/* --- Thiết lập chung --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+.custom-text-justify {
+    text-align: justify; 
+    font-size: 17px; 
+    padding: 0 15px;
+    line-height: 1.6;
+}
+
+/* --- Xử lý hiển thị trên Máy tính (Desktop >= 992px) --- */
+@media (min-width: 992px) {
+    #about .container {
+        max-width: 1240px;
+    }
+
+    .has-divider {
+        display: flex !important;
+        flex-wrap: nowrap !important; /* Giữ 3 cột trên 1 hàng */
+        justify-content: center !important;
+        overflow: visible !important; /* Quan trọng để hiện đường kẻ */
+    }
+
+    /* Tạo khoảng trống giữa các cột cho đường kẻ */
+    .divider-column {
+        position: relative;
+        margin-right: 20px; 
+        padding-right: 20px;
+    }
+
+    /* Vẽ đường kẻ dọc dải màu Xanh - Tím */
+    .divider-column::after {
+        content: "";
+        position: absolute;
+        right: -10px; /* Đặt vào giữa khoảng trống 2 cột */
+        top: 15%;    /* Vị trí bắt đầu từ trên xuống */
+        width: 1.5px;  /* Độ dày đường kẻ */
+        height: 180px; /* Chiều cao đường kẻ */
+        /* Màu Gradient chuẩn theo ảnh bạn gửi */
+        background: linear-gradient(to bottom, #00c6ff, #9C27B0) !important;
+        z-index: 10;
+    }
+}
+
+/* --- Xử lý hiển thị trên Điện thoại/Tablet (< 992px) --- */
+@media (max-width: 991px) {
+    #about .row {
+        flex-wrap: wrap !important;
+    }
+
+    .custom-text-justify {
+        text-align: center; /* Căn giữa trên mobile cho đẹp */
+        margin-bottom: 30px;
+    }
+
+    /* Ẩn hoàn toàn đường kẻ khi xuống hàng để tránh lỗi giao diện */
+    .divider-column::after {
+        display: none !important;
+    }
+
+    .single-logo img {
+        max-width: 150px;
+    }
+}
+
+/* --- TRÊN MÁY TÍNH (PC) --- */
+@media (min-width: 992px) {
+    .custom-flex-row {
+        display: flex !important;
+        /* Tạo khoảng cách 60px giữa 2 cột */
+        gap: 60px !important; 
+        flex-wrap: nowrap !important;
+    }
+
+    .about-content-box {
+        /* Bắt buộc cột này phải co giãn tự nhiên, không bị khóa 170px */
+        flex: 1 !important; 
+        max-width: none !important;
+        width: auto !important;
+        padding: 0 !important;
+    }
+
+    .about-image-box {
+        flex: 1 !important;
+        max-width: none !important;
+        width: auto !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-content-box p {
+        text-align: justify;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+}
+
+/* --- TRÊN MOBILE --- */
+@media (max-width: 991px) {
+    .custom-flex-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px !important; /* Khoảng cách dọc trên mobile */
+    }
+
+    .about-content-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center;
+    }
+
+    .about-content-box p {
+        text-align: center !important;
+        padding: 0 20px;
+    }
+
+    .rounded-image {
+        max-width: 90% !important;
+        margin: 0 auto;
+    }
+}
+
